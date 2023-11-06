@@ -316,7 +316,11 @@ SELECT alunos.nome, primeira_nota, segunda_nota, ROUND(AVG((primeira_nota + segu
 ### 12) Faça uma consulta que exclua um aluno do curso de Redes de Computadores e um aluno do curso de UX/UI.
 ```sql
 
-DELETE FROM alunos WHERE id = 5 OR id = 1;
+-- Excluindo um aluno do curso de Redes de Computadores
+DELETE FROM alunos WHERE nome = 'Robert Sheer' AND curso_id = 5;
+
+-- Excluindo um aluno do curso de UX/UI
+DELETE FROM alunos WHERE nome = 'Mário Calore' AND curso_id = 3;
 
 ```
 ![Relatório 12](resultados_alunos/relatorio12.jpg)
