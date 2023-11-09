@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Set-2023 às 19:08
+-- Tempo de geração: 09-Nov-2023 às 15:14
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -33,24 +33,8 @@ CREATE TABLE `alunos` (
   `data_de_nascimento` date NOT NULL,
   `primeira_nota` decimal(4,2) NOT NULL,
   `segunda_nota` decimal(4,2) NOT NULL,
-  `curso_id` smallint(6) NOT NULL
+  `curso_id` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `alunos`
---
-
-INSERT INTO `alunos` (`id`, `nome`, `data_de_nascimento`, `primeira_nota`, `segunda_nota`, `curso_id`) VALUES
-(1, 'Ignacio Neto', '1982-02-26', 8.00, 10.00, 3),
-(2, 'Maria Yussef', '1985-02-26', 9.00, 10.00, 2),
-(3, 'Robert Sheer', '1995-02-03', 9.00, 7.00, 5),
-(4, 'Rosana Uter', '1970-06-09', 10.00, 10.00, 1),
-(5, 'Vater Gustavo', '1955-11-19', 9.00, 9.00, 4),
-(6, 'Valéria Linda', '2005-09-26', 4.00, 7.00, 2),
-(7, 'Mário Calore', '1995-02-03', 10.00, 7.00, 3),
-(8, 'Ariana Grande', '1995-02-03', 8.00, 3.00, 4),
-(9, 'Michael Robert', '1995-02-03', 9.00, 9.00, 1),
-(10, 'Viviane Lima', '2015-01-01', 10.00, 9.00, 3);
 
 -- --------------------------------------------------------
 
@@ -65,17 +49,6 @@ CREATE TABLE `cursos` (
   `professor_id` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Extraindo dados da tabela `cursos`
---
-
-INSERT INTO `cursos` (`id`, `titulo`, `carga_horaria`, `professor_id`) VALUES
-(1, 'Front-End', 40, 5),
-(2, 'Back-End', 80, 4),
-(3, 'UX/UI Design', 30, 3),
-(4, 'Figma', 10, 2),
-(5, 'Redes de Computadores', 100, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -86,19 +59,8 @@ CREATE TABLE `professores` (
   `id` smallint(6) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `area_de_atuacao` enum('design','desenvolvimento','infra') NOT NULL,
-  `curso_id` smallint(6) NOT NULL
+  `curso_id` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `professores`
---
-
-INSERT INTO `professores` (`id`, `nome`, `area_de_atuacao`, `curso_id`) VALUES
-(1, 'Jon Oliva', 'infra', 5),
-(2, 'Lemmy Kilmister', 'design', 4),
-(3, 'Neil Peart', 'design', 3),
-(4, 'Ozzy Osbourne', 'desenvolvimento', 2),
-(5, 'David Gilmour', 'desenvolvimento', 1);
 
 --
 -- Índices para tabelas despejadas
@@ -133,19 +95,19 @@ ALTER TABLE `professores`
 -- AUTO_INCREMENT de tabela `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas
